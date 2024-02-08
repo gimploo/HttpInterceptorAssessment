@@ -6,38 +6,22 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class ToasterService implements OnDestroy{
 
-  title: BehaviorSubject<string> = new BehaviorSubject<string>('Title');
-  message: BehaviorSubject<string> = new BehaviorSubject<string>('Message');
-  styleVisible: BehaviorSubject<string> = new BehaviorSubject<string>('hidden');
+  messageType: BehaviorSubject<string> = new BehaviorSubject<string>('Unknown');
 
   constructor() { }
 
-  private _toggleVisibility()
-  {
-    this.styleVisible.next('visible');
-
-    setTimeout(() => {
-      this.styleVisible.next('hidden');
-    }, 3000);
-  }
-
   public success()
   {
-    this.title.next("Success");
-    this.message.next('Operation successful!');
-    this._toggleVisibility();
+    this.messageType.next("success");
   }
 
   public error()
   {
-    this.title.next("Error");
-    this.message.next('An error occurred. Please try again later.');
-    this._toggleVisibility();
+    this.messageType.next("error");
   }
 
   public ngOnDestroy(): void {
 
-    this.title.unsubscribe();
-    this.message.unsubscribe();
+    this.messageType.unsubscribe();
   }
 }

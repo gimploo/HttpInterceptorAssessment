@@ -31,6 +31,7 @@ export class ButtonComponent {
         this.sendDataEvent.emit(
           JSON.stringify(error)
         );
+        this.toasterService.error();
       }
     );
   }
@@ -42,12 +43,13 @@ export class ButtonComponent {
         this.sendDataEvent.emit(
           JSON.stringify(JSON.parse(response), null, 2)
         );
+        this.toasterService.success();
       },
       (error) => {
-        this.toasterService.error();
         this.sendDataEvent.emit(
           JSON.stringify(error, null, 2)
         );
+        this.toasterService.error();
       }
     );
   }

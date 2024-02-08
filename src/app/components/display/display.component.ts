@@ -13,14 +13,9 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
   templateUrl: './display.component.html',
   styleUrl: './display.component.scss'
 })
-export class DisplayComponent implements OnInit {
+export class DisplayComponent {
 
   @Input() displayData!: any;
 
   constructor(private apiService: ApiService) {}
-
-  public ngOnInit(): void {
-
-  }
-
 }

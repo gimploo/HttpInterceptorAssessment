@@ -11,23 +11,64 @@ import { ToasterService } from '../../services/toaster.service';
 })
 export class ToasterComponent implements OnInit {
 
-  title!: string;
-  message!: string;
-  styleVisible!: string;
+  config: ToasterConfig;
+  visibility: string;
 
-  constructor(private toasterService: ToasterService) { }
+  constructor(private toasterService: ToasterService) 
+  { 
+    this.config = {
+      title: "Title",
+      bgcolor: "black",
+      message: "Message"
+    }
+
+    this.visibility = 'hidden';
+  }
+
+  private _setupToasterConfig(type: string)
+  {
+    switch(type.toLowerCase())
+    {
+      case 'success':
+        this.config.title = 'Success';
+        this.config.message = 'Operation successful!';
+        this.config.bgcolor = 'lightgreen';
+        this._toggleVisibility();
+      break;
+
+      case 'error':
+        this.config.title = 'Error';
+        this.config.message = 'An error occurred. Please try again later.';
+        this.config.bgcolor = 'lightcoral';
+        this._toggleVisibility();
+      break;
+
+      default:
+        this.visibility = 'hidden';
+      break;
+    }
+  }
+
+  private _toggleVisibility()
+  {
+    this.visibility = 'visible';
+    setTimeout(() => {
+      this.visibility = 'hidden';
+    }, 3000);
+  }
 
   public ngOnInit(): void 
   {
-    this.toasterService.title.subscribe(data => {
-      this.title = data;
-    })
-    this.toasterService.message.subscribe(data => {
-      this.message = data;
-    })
-    this.toasterService.styleVisible.subscribe(data => {
-      this.styleVisible = data;
+    this.toasterService.messageType.subscribe(data => {
+      console.log(data);
+      this._setupToasterConfig(data);
     })
   }
 
+}
+
+interface ToasterConfig {
+  title: string;
+  message: string;
+  bgcolor: string;
 }
