@@ -1,0 +1,30 @@
+.display-container {
+    border-style: ridge;
+    border-radius: 8px;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.display-title {
+    margin-left: 20px;
+    text-align: left;
+    font-weight: lighter;
+}
+
+.display-hr {
+    margin-left: 20px;
+    width: 500px;
+}
+
+.display-data {
+    width: full;
+    height: 200px;
+    background-color: lightslategray;
+    overflow: scroll;
+    margin: 20px;
+    padding: 30px;
+    border-radius: 8px;
+
+    color: white;
+}
