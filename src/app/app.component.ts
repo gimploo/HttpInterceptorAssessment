@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ButtonComponent } from './components/button/button.component';
 import { DisplayComponent } from './components/display/display.component';
-import { ApiService } from './services/api/api.service';
+import { ApiService } from './services/api.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ToasterComponent } from './components/toaster/toaster.component';
-import { ToasterService } from './services/toaster/toaster.service';
+import { ToasterService } from './services/toaster.service';
 
 @Component({
   selector: 'app-root',
@@ -27,8 +27,6 @@ import { ToasterService } from './services/toaster/toaster.service';
 })
 export class AppComponent {
   title = 'HttpInterceptorAssessment';
-
-  toasterMessage: string = '';
 
   data!: any;
 

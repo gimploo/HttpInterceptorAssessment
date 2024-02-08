@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { ToasterService } from '../../services/toaster/toaster.service';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { ToasterService } from '../../services/toaster.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-toaster',
@@ -9,12 +10,22 @@ import { ToasterService } from '../../services/toaster/toaster.service';
   templateUrl: './toaster.component.html',
   styleUrl: './toaster.component.scss'
 })
-export class ToasterComponent {
+export class ToasterComponent implements OnInit {
 
   title!: string;
   message!: string;
 
-  constructor(private toasterService: ToasterService){}
+  constructor(private toasterService: ToasterService) { }
+
+  public ngOnInit(): void 
+  {
+    this.toasterService.title.subscribe(data => {
+      this.title = data;
+    })
+    this.toasterService.message.subscribe(data => {
+      this.message = data;
+    })
+  }
 
 
 }

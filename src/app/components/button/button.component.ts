@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { ApiService } from '../../services/api/api.service';
+import { ApiService } from '../../services/api.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ToasterService } from '../../services/toaster.service';
 
 @Component({
   selector: 'app-button',
@@ -15,7 +16,7 @@ export class ButtonComponent {
 
   @Output() sendDataEvent = new EventEmitter<string>();
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private toasterService: ToasterService) {}
 
   realApiFetch()
   {
@@ -24,6 +25,7 @@ export class ButtonComponent {
         this.sendDataEvent.emit(
           JSON.stringify(response, null, 2)
         );
+        this.toasterService.success();
       },
       (error) => {
         this.sendDataEvent.emit(
@@ -42,6 +44,7 @@ export class ButtonComponent {
         );
       },
       (error) => {
+        this.toasterService.error();
         this.sendDataEvent.emit(
           JSON.stringify(error, null, 2)
         );
