@@ -1,4 +1,4 @@
-<div class="toaster-container">
+<div [ngStyle]="{'visibility': styleVisible}" class="toaster-container">
     <h1 class="toaster-title">{{title || "Title"}}</h1>
     <p class="toaster-message">{{message || "Message"}}</p>
 </div>

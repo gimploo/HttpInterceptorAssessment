@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ToasterService } from '../../services/toaster.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-toaster',
@@ -14,6 +13,7 @@ export class ToasterComponent implements OnInit {
 
   title!: string;
   message!: string;
+  styleVisible!: string;
 
   constructor(private toasterService: ToasterService) { }
 
@@ -25,7 +25,9 @@ export class ToasterComponent implements OnInit {
     this.toasterService.message.subscribe(data => {
       this.message = data;
     })
+    this.toasterService.styleVisible.subscribe(data => {
+      this.styleVisible = data;
+    })
   }
-
 
 }
