@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api/api.service';
 import { CommonModule } from '@angular/common';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @Component({
   selector: 'app-display',
@@ -8,6 +9,7 @@ import { CommonModule } from '@angular/common';
   imports: [ 
     CommonModule
   ],
+  providers: [],
   templateUrl: './display.component.html',
   styleUrl: './display.component.scss'
 })

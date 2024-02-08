@@ -3,9 +3,8 @@ import { RouterOutlet } from '@angular/router';
 import { ButtonComponent } from './components/button/button.component';
 import { DisplayComponent } from './components/display/display.component';
 import { ApiService } from './services/api/api.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ToasterComponent } from './components/toaster/toaster.component';
-import { HttpInterceptorService } from './services/http-interceptor/http-interceptor.service';
 import { ToasterService } from './services/toaster/toaster.service';
 
 @Component({
@@ -13,14 +12,14 @@ import { ToasterService } from './services/toaster/toaster.service';
   standalone: true,
   imports: [
     RouterOutlet, 
+    HttpClientModule,
+
     ButtonComponent,
     DisplayComponent,
-    HttpClientModule,
     ToasterComponent
   ],
   providers: [
     ApiService,
-    HttpInterceptorService,
     ToasterService
   ],
   templateUrl: './app.component.html',
@@ -35,7 +34,6 @@ export class AppComponent {
 
   setData(data: any)
   {
-    console.log(data);
     this.data = data;
   }
 }

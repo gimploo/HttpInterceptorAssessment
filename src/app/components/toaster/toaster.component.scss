@@ -1,10 +1,29 @@
-/* toaster.component.css */
+
 .toaster {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #333;
-  color: #fff;
-  padding: 10px;
-  border-radius: 5px;
+    &-container {
+
+        visibility: visible;
+
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 400px;
+        border-radius: 10px;
+        padding: 4px;
+        background-color: lightblue;
+        display: flex;
+    }
+
+    &-title {
+        color: aliceblue;
+        font-size: 30px;
+        margin-left: 10px;
+    }
+
+    &-message {
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-left: 20px;
+        font-size: 20px;
+    }
 }

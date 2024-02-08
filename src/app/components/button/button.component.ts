@@ -1,10 +1,13 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ApiService } from '../../services/api/api.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @Component({
   selector: 'app-button',
   standalone: true,
   imports: [],
+  providers:[
+  ],
   templateUrl: './button.component.html',
   styleUrl: './button.component.scss'
 })

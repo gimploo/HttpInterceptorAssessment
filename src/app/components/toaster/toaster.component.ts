@@ -1,21 +1,20 @@
-import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { ToasterService } from '../../services/toaster/toaster.service';
 
 @Component({
   selector: 'app-toaster',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './toaster.component.html',
   styleUrl: './toaster.component.scss'
 })
-
 export class ToasterComponent {
 
-  @Input() message!: string;
+  title!: string;
+  message!: string;
 
-}
+  constructor(private toasterService: ToasterService){}
 
 
-interface ToasterNode {
-  title: string;
-  message: string;
 }
